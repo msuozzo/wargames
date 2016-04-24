@@ -17,7 +17,7 @@ def leviathan0(proc):
   # Single line is wrapped in the output (likely terminal width limitation)
   proc.sendline('grep -o "the password for leviathan1 is [^\\"]*" \\\n'
                 '~/.backup/bookmarks.html | cut -d" " -f6')
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   return proc.before.splitlines()[2]
 
 
@@ -60,9 +60,9 @@ def leviathan2(proc):
           kill "$PID"
       }
   """).strip())
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   proc.sendline('exploit')
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   return proc.before.splitlines()[1]
 
 
@@ -70,7 +70,7 @@ def leviathan2_alt(proc):
   fname = '/tmp/adadadaddada'
   proc.sendline('touch %s && ~/printfile %s /etc/leviathan_pass/leviathan3' %
           (fname, fname))
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   return proc.before.splitlines()[1]
 
 
@@ -82,15 +82,15 @@ def leviathan3(proc):
 
 def leviathan4(proc):
   proc.sendline('.trash/bin | rax2 -b')
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   return proc.before.splitlines()[1]
 
 
 def leviathan5(proc):
   proc.sendline('ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log')
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   proc.sendline('./leviathan5')
-  proc.expect(r'\$ ')
+  proc.expect_prompt()
   return proc.before.splitlines()[1]
 
 
