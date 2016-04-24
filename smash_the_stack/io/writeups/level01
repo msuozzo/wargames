@@ -1,0 +1,12 @@
+Decompile executable
+Find input compared against 0x10F
+Converting to decimal we get the passcode of 271
+Enter this code at the prompt
+This launches a shell where we have euid of level2
+Success
+
+Solution:
+```
+/levels/level01
+271
+```

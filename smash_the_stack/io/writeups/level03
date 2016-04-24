@@ -1,0 +1,19 @@
+Relatively simple RevEng
+Open in gdb
+Requires a single argument
+Argument must be > 3 characters
+Load in IDA
+I'm thinking overflow
+Memsetting all but last 4 chars to 0
+    maybe nop sled through "bad" function -> "good" precedes "bad" so no dice
+    maybe modify the 0x8048a4 address which is getting called -> bingo
+Difference between the 0x58 and 0xc is 76
+Test with 76 chars and dump memory -> a4 is next byte!
+Want to replace with 0x74
+    ASCII 't'
+run with argument of any 76 ascii chars followed by a 't'
+
+Solution:
+```
+/levels/level03 $(python -c "print 76*'a' + 't'") 
+```

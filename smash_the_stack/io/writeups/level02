@@ -1,0 +1,26 @@
+This challenge took far too long
+First attempt to induce SIGFP
+Only ways to do that are with divide-by-zero or floating point operations
+The program also checks that second arg isn't falsey
+
+Gave up and attempted alt
+Challenge is to get exact floating point representation of the first few digits of pi
+spent a long time trying to work within strtod's format to get an exact representation
+Parsed value would jump from just below, to just above the target value.
+Realized that this jump represented the granularity of float
+Gave up trying to be tricky
+
+Went back to original
+Attempted to modify the values during a gdb session
+Realized this wasn't possible because of setuid
+
+Went back to Alt
+Found page that talked about strtod's handling of Inf
+Realized NaN was another corner case mentioned in the man page
+Thought that it would probably not pass either the < or > comparators used to determine whether input should fail
+Success
+
+Solution:
+```
+/levels/level02_alt NaN
+```
